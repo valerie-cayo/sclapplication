@@ -1,0 +1,82 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.7
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Sep 20, 2013 at 06:27 PM
+-- Server version: 5.5.29
+-- PHP Version: 5.4.10
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `tut_blog`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `body` text,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `body`, `created`, `modified`, `user_id`) VALUES
+(1, 'The title', 'Editing this post', '2013-09-19 20:46:45', '2013-09-20 18:05:02', NULL),
+(2, 'A title once again', 'And the post body follows.', '2013-09-19 20:46:45', NULL, NULL),
+(4, 'TestPost', 'Words go here', '2013-09-20 16:09:52', '2013-09-20 16:09:52', NULL),
+(6, 'nothing', 'words', '2013-09-20 17:37:00', '2013-09-20 17:37:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `role` varchar(20) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `created`, `modified`) VALUES
+(1, 'Valerie', 'f2ade4729b5d0ef56c9d66f2f69178cdf93354ac', 'admin', '2013-09-20 17:34:24', '2013-09-20 17:34:24'),
+(2, 'admin', '86e589bef57e0d8b498e67352d63416944812874', 'admin', '2013-09-20 17:40:36', '2013-09-20 17:40:36'),
+(3, 'author', '81579291b902b3c3c2d9a321297604097ed9d088', 'author', '2013-09-20 18:05:22', '2013-09-20 18:05:22');
