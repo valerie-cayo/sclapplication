@@ -84,7 +84,7 @@ class XmlTest extends CakeTestCase {
 /**
  * autoFixtures property
  *
- * @var boolean
+ * @var bool false
  */
 	public $autoFixtures = false;
 

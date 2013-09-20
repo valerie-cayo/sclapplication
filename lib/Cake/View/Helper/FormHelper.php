@@ -647,7 +647,7 @@ class FormHelper extends AppHelper {
  *
  * ### Options:
  *
- * - `escape` boolean - Whether or not to html escape the contents of the error.
+ * - `escape` bool - Whether or not to html escape the contents of the error.
  * - `wrap` mixed - Whether or not the error message should be wrapped in a div. If a
  *   string, will be used as the HTML tag to use.
  * - `class` string - The classname for the error message
@@ -1520,11 +1520,8 @@ class FormHelper extends AppHelper {
 			);
 
 			if ($label) {
-				$labelOpts = is_array($label) ? $label : array();
-				$labelOpts += array('for' => $tagName);
-				$optTitle = $this->label($tagName, $optTitle, $labelOpts);
+				$optTitle = $this->Html->useTag('label', $tagName, '', $optTitle);
 			}
-
 			if (is_array($between)) {
 				$optTitle .= array_shift($between);
 			}
@@ -1739,7 +1736,7 @@ class FormHelper extends AppHelper {
  * @param string $title The content to be wrapped by <a> tags.
  * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
  * @param array $options Array of HTML attributes.
- * @param boolean|string $confirmMessage JavaScript confirmation message.
+ * @param bool|string $confirmMessage JavaScript confirmation message.
  * @return string An `<a />` element.
  * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/form.html#FormHelper::postLink
  */

@@ -53,7 +53,7 @@ class Contact extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -144,7 +144,7 @@ class ContactTagsContact extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -209,7 +209,7 @@ class ContactTag extends Model {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -236,7 +236,7 @@ class UserForm extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -276,7 +276,7 @@ class OpenidUrl extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -331,7 +331,7 @@ class ValidateUser extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -380,7 +380,7 @@ class ValidateProfile extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -439,7 +439,7 @@ class ValidateItem extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -488,7 +488,7 @@ class TestMail extends CakeTestModel {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -4075,47 +4075,6 @@ class FormHelperTest extends CakeTestCase {
 			'hiddenField' => false
 		));
 		$this->assertTextNotContains('"Model1Field"', $result);
-	}
-
-/**
- * Test that radio() accepts an array for label
- *
- * @return void
- */
-	public function testRadioLabelArray() {
-		$result = $this->Form->input('Model.field', array(
-			'type' => 'radio',
-			'legend' => false,
-			'label' => array(
-				'class' => 'checkbox float-left',
-			),
-			'options' => array('1' => 'Option A', '2' => 'Option B.')
-		));
-		$this->assertTextContains(
-			'<label for="ModelField1" class="checkbox float-left">Option A</label>',
-			$result
-		);
-	}
-
-/**
- * Test that label id's match the input element id's when radio is called after create().
- *
- * @return void
- */
-	public function testRadioWithCreate() {
-		$this->Form->create('Model');
-		$result = $this->Form->radio('recipient',
-			array('1' => '1', '2' => '2', '3' => '3'),
-			array('legend' => false, 'value' => '1')
-		);
-		$this->assertTextNotContains(
-			'<label for="ModelModelRecipient1">1</label>',
-			$result
-		);
-		$this->assertTextContains(
-			'<label for="ModelRecipient1">1</label>',
-			$result
-		);
 	}
 
 /**

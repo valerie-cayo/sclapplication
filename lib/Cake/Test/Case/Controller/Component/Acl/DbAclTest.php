@@ -42,7 +42,7 @@ class AclNodeTwoTestBase extends AclNode {
 /**
  * cacheSources property
  *
- * @var boolean
+ * @var bool false
  */
 	public $cacheSources = false;
 }
@@ -129,7 +129,7 @@ class PermissionTwoTest extends Permission {
 /**
  * cacheQueries property
  *
- * @var boolean
+ * @var bool false
  */
 	public $cacheQueries = false;
 

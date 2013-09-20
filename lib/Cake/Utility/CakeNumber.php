@@ -135,7 +135,6 @@ class CakeNumber {
  * @param mixed $default Value to be returned when invalid size was used, for example 'Unknown type'
  * @return mixed Number of bytes as integer on success, `$default` on failure if not false
  * @throws CakeException On invalid Unit type.
- * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::fromReadableSize
  */
 	public static function fromReadableSize($size, $default = false) {
 		if (ctype_digit($size)) {
@@ -190,7 +189,7 @@ class CakeNumber {
  * Formats a number into a currency format.
  *
  * @param float $value A floating point number
- * @param integer $options If integer then places, if string then before, if (,.-) then use it
+ * @param integer $options if int then places, if string then before, if (,.-) then use it
  *   or array with places and before keys
  * @return string formatted number
  * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::format
@@ -247,7 +246,6 @@ class CakeNumber {
  * @param float $value A floating point number
  * @param array $options
  * @return string formatted delta
- * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::formatDelta
  */
 	public static function formatDelta($value, $options = array()) {
 		$places = isset($options['places']) ? $options['places'] : 0;
@@ -406,7 +404,6 @@ class CakeNumber {
  *
  * @param string $currency Default currency string used by currency() if $currency argument is not provided
  * @return string Currency
- * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::defaultCurrency
  */
 	public static function defaultCurrency($currency = null) {
 		if ($currency) {

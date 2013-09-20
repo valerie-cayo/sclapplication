@@ -848,7 +848,7 @@ class CakeResponse {
  * If called with no parameters, this function will return the current max-age value if any
  *
  * @param integer $seconds if null, the method will return the current s-maxage value
- * @return integer
+ * @return int
  */
 	public function sharedMaxAge($seconds = null) {
 		if ($seconds !== null) {
@@ -868,7 +868,7 @@ class CakeResponse {
  * If called with no parameters, this function will return the current max-age value if any
  *
  * @param integer $seconds if null, the method will return the current max-age value
- * @return integer
+ * @return int
  */
 	public function maxAge($seconds = null) {
 		if ($seconds !== null) {

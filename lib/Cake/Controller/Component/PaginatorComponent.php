@@ -361,10 +361,6 @@ class PaginatorComponent extends Component {
  * @return array An array of options with sort + direction removed and replaced with order if possible.
  */
 	public function validateSort(Model $object, array $options, array $whitelist = array()) {
-		if (empty($options['order']) && is_array($object->order)) {
-			$options['order'] = $object->order;
-		}
-
 		if (isset($options['sort'])) {
 			$direction = null;
 			if (isset($options['direction'])) {
@@ -405,7 +401,9 @@ class PaginatorComponent extends Component {
 			}
 			$options['order'] = $order;
 		}
-
+		if (empty($options['order']) && !empty($object->order)) {
+			$options['order'] = $object->order;
+		}
 		return $options;
 	}
 

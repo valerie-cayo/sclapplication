@@ -88,10 +88,9 @@ class TreeBehavior extends ModelBehavior {
  *
  * @param Model $Model Model instance.
  * @param boolean $created indicates whether the node just saved was created or updated
- * @param array $options Options passed from Model::save().
  * @return boolean true on success, false on failure
  */
-	public function afterSave(Model $Model, $created, $options = array()) {
+	public function afterSave(Model $Model, $created) {
 		extract($this->settings[$Model->alias]);
 		if ($created) {
 			if ((isset($Model->data[$Model->alias][$parent])) && $Model->data[$Model->alias][$parent]) {
@@ -176,11 +175,9 @@ class TreeBehavior extends ModelBehavior {
  *
  * @since         1.2
  * @param Model $Model Model instance
- * @param array $options Options passed from Model::save().
  * @return boolean true to continue, false to abort the save
- * @see Model::save()
  */
-	public function beforeSave(Model $Model, $options = array()) {
+	public function beforeSave(Model $Model) {
 		extract($this->settings[$Model->alias]);
 
 		$this->_addToWhitelist($Model, array($left, $right));
@@ -378,12 +375,6 @@ class TreeBehavior extends ModelBehavior {
 		} else {
 			array_unshift($valuePath, '%s' . $valuePath[0], '{n}.tree_prefix');
 		}
-
-		$conditions = (array)$conditions;
-		if ($scope) {
-			$conditions[] = $scope;
-		}
-
 		$order = $Model->escapeField($left) . " asc";
 		$results = $Model->find('all', compact('conditions', 'fields', 'order', 'recursive'));
 		$stack = array();
@@ -676,7 +667,7 @@ class TreeBehavior extends ModelBehavior {
 
 		$scope = $this->settings[$Model->alias]['scope'];
 		if ($scope && ($scope !== '1 = 1' && $scope !== true)) {
-			$params['conditions'][] = $scope;
+			$conditions[] = $scope;
 		}
 
 		$children = $Model->find('all', $params);

@@ -25,6 +25,8 @@
  */
 class TestsAppsController extends AppController {
 
+	public $name = 'TestsApps';
+
 	public $uses = array();
 
 	public $components = array('RequestHandler');

@@ -33,7 +33,7 @@ class HelperTestPost extends Model {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -73,7 +73,7 @@ class HelperTestComment extends Model {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -107,7 +107,7 @@ class HelperTestTag extends Model {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -138,7 +138,7 @@ class HelperTestPostsTag extends Model {
 /**
  * useTable property
  *
- * @var boolean
+ * @var bool false
  */
 	public $useTable = false;
 
@@ -975,7 +975,8 @@ class HelperTest extends CakeTestCase {
 		$Helper->OtherHelper;
 
 		$result = $this->View->Helpers->enabled();
-		$this->assertEquals(array(), $result, 'Helper helpers were attached to the collection.');
+		$expected = array('Html');
+		$this->assertEquals($expected, $result, 'Helper helpers were attached to the collection.');
 	}
 
 /**

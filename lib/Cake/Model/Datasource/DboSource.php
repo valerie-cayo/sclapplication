@@ -952,14 +952,14 @@ class DboSource extends DataSource {
 
 		if ($quote) {
 			if ($schema && !empty($schemaName)) {
-				if (strstr($table, '.') === false) {
+				if (false == strstr($table, '.')) {
 					return $this->name($schemaName) . '.' . $this->name($table);
 				}
 			}
 			return $this->name($table);
 		}
 		if ($schema && !empty($schemaName)) {
-			if (strstr($table, '.') === false) {
+			if (false == strstr($table, '.')) {
 				return $schemaName . '.' . $table;
 			}
 		}
@@ -1065,7 +1065,7 @@ class DboSource extends DataSource {
 					if ($bypass) {
 						$assocData['fields'] = false;
 					}
-					if ($this->generateAssociationQuery($model, $linkModel, $type, $assoc, $assocData, $queryData, $external, $null) === true) {
+					if (true === $this->generateAssociationQuery($model, $linkModel, $type, $assoc, $assocData, $queryData, $external, $null)) {
 						$linkedModels[$type . '/' . $assoc] = true;
 					}
 				}
@@ -1730,10 +1730,8 @@ class DboSource extends DataSource {
  * @return string
  */
 	public function renderJoinStatement($data) {
-		if (strtoupper($data['type']) === 'CROSS') {
-			return "{$data['type']} JOIN {$data['table']} {$data['alias']}";
-		}
-		return trim("{$data['type']} JOIN {$data['table']} {$data['alias']} ON ({$data['conditions']})");
+		extract($data);
+		return trim("{$type} JOIN {$table} {$alias} ON ({$conditions})");
 	}
 
 /**

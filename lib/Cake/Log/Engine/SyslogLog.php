@@ -146,7 +146,7 @@ class SyslogLog extends BaseLog {
  *
  * @param integer $priority
  * @param string $message
- * @return boolean
+ * @return bool
  */
 	protected function _write($priority, $message) {
 		return syslog($priority, $message);
